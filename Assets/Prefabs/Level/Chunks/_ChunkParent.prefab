@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7914230892080082333}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: Obstacle Spawn Points Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8969368205081792808}
   m_Layer: 0
-  m_Name: RoadContainer
+  m_Name: Models Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5062688419011845562}
   m_Layer: 0
-  m_Name: FruitContainer
+  m_Name: Fruits Spawn Points Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,7 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 540904519770300259}
   m_Layer: 0
-  m_Name: ColliderContainer
+  m_Name: Collider Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

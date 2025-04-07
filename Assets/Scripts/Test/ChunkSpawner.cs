@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
-// Підключаємо простір імен для ChunkBehaviour
 
 namespace Test
 {
@@ -22,37 +19,30 @@ namespace Test
             }
         }
 
-        public void SpawnNextChunk()
+        private void SpawnNextChunk()
         {
-            var prefab = chunkPrefabs[0];
-            var newChunk = Instantiate(prefab, spawnRoot);
+            var prefab = chunkPrefabs[Random.Range(0, chunkPrefabs.Count)];
+            var chunk = Instantiate(prefab, spawnRoot);
 
-            if (newChunk.StartPoint == null || newChunk.EndPoint == null)
+            if (chunk.StartPoint == null || chunk.EndPoint == null)
             {
-                Debug.LogError($"Chunk {newChunk.name} is missing StartPoint or EndPoint!");
-                Destroy(newChunk.gameObject);
+                Debug.LogError($"Chunk {chunk.name} is missing StartPoint or EndPoint!");
+                Destroy(chunk.gameObject);
                 return;
             }
 
             if (_lastChunk == null)
             {
-                // Перший чанк — ставимо його так, щоб StartPoint = Vector3.zero
-                Vector3 offset = newChunk.transform.position - newChunk.StartPoint.position;
-                newChunk.transform.position = Vector3.zero + offset;
+                var offset = chunk.transform.position - chunk.StartPoint.position;
+                chunk.transform.position = Vector3.zero + offset;
             }
             else
             {
-                // Вирівнюємо StartPoint нового чанка до EndPoint попереднього
-                Vector3 offset = newChunk.transform.position - newChunk.StartPoint.position;
-                newChunk.transform.position = _lastChunk.EndPoint.position + offset;
+                var offset = chunk.transform.position - chunk.StartPoint.position;
+                chunk.transform.position = _lastChunk.EndPoint.position + offset;
             }
 
-            _lastChunk = newChunk;
-        }
-
-        public void ResetSpawner()
-        {
-            _lastChunk = null;
+            _lastChunk = chunk;
         }
     }
 }
