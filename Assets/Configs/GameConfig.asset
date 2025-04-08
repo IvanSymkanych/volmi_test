@@ -22,6 +22,8 @@ MonoBehaviour:
   <GameOverPagePrefab>k__BackingField: {fileID: 1038650949734731903, guid: a8210a78548cb5e49a8c312ad545c5a9, type: 3}
   <GamePagePrefab>k__BackingField: {fileID: 2743013534234774345, guid: 1aa5965ff3b9f1e47b3a7a71bfafcc82, type: 3}
   <StartGamePagePrefab>k__BackingField: {fileID: 2409446881606384821, guid: 78346c7ae92422c45bd628b818adbb72, type: 3}
+  <LobbyMainPageView>k__BackingField: {fileID: 4347455858621362010, guid: dea18f896e088a6429f4bfd7e894e3bc, type: 3}
+  <ScoreViewPrefab>k__BackingField: {fileID: 7981689996889162602, guid: c3630e5f912db624db780180b0dcc747, type: 3}
   <FirsChunkPosition>k__BackingField: {x: 0, y: 0, z: -15}
   <PlayerPosition>k__BackingField: {x: 0, y: 0.55, z: 0}
   <ChunksPerSpawn>k__BackingField: 10
@@ -38,3 +40,5 @@ MonoBehaviour:
   - score: 50
     spawnChanceWeight: 200
     fruitControllerPrefab: {fileID: 3001941004644520044, guid: a03434022aaed9a47b305cf81b2780e3, type: 3}
+  <forwardSpeed>k__BackingField: 10
+  <laneSwitchSpeed>k__BackingField: 10

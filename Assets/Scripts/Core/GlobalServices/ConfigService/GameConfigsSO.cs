@@ -4,6 +4,7 @@ using Core.GlobalServices.CurtainService;
 using Game.ChunkSystem;
 using Game.Obstacle;
 using Game.Player;
+using Lobby.UI;
 using UI;
 using UnityEngine;
 
@@ -22,6 +23,8 @@ namespace Core.GlobalServices.ConfigService
         [field: SerializeField] public BasePageView GameOverPagePrefab { get; private set; }
         [field: SerializeField] public BasePageView GamePagePrefab { get; private set; }
         [field: SerializeField] public BasePageView StartGamePagePrefab { get; private set; }
+        [field: SerializeField] public BasePageView LobbyMainPageView { get; private set; }
+        [field: SerializeField] public ScoreView ScoreViewPrefab { get; private set; }
 
         #endregion
 

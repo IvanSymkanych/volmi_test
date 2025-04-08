@@ -15,7 +15,8 @@ namespace Game.Controllers
         public ScoreController(ISaveLoadService saveLoadService)
         {
             _saveLoadService = saveLoadService;
-            HighScore = _saveLoadService.GameSaveModel.scoreList.Max();
+            if(_saveLoadService.GameSaveModel.scoreList is { Count: > 0 }) 
+                HighScore = _saveLoadService.GameSaveModel.scoreList.Max();
         }
 
         public void AddScore(int score)

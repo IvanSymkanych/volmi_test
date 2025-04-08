@@ -10,7 +10,6 @@ namespace Core.ScopeInstaller
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<LobbyController>(Lifetime.Scoped);
-
             builder.Register<ILobbyFactory, LobbyFactory>(Lifetime.Scoped);
         }
     }

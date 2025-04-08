@@ -15,7 +15,6 @@ namespace Core.StateMachine.Global
         {
             await _globalStateMachine.Enter<BootState>();
             await _globalStateMachine.Enter<LobbyState>();
-            await _globalStateMachine.Enter<GameState>();
         }
     }
 }
