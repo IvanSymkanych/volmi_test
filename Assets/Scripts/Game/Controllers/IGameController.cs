@@ -2,5 +2,8 @@
 {
     public interface IGameController
     {
+        void StartGame();
+        void GameOver();
+        void GoToLobby();
     }
 }

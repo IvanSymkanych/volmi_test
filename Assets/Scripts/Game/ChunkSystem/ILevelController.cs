@@ -5,6 +5,7 @@ namespace Game.ChunkSystem
     public interface ILevelController
     {
         void Initialize(Transform playTransform);
-        void Dispose();
+        void GameOver();
+        void StopGame();
     }
 }

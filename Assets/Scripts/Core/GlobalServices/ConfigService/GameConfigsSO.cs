@@ -2,6 +2,7 @@
 using Core.GlobalServices.ConfigService.Config;
 using Core.GlobalServices.CurtainService;
 using Game.ChunkSystem;
+using Game.Obstacle;
 using Game.Player;
 using UnityEngine;
 
@@ -13,8 +14,9 @@ namespace Core.GlobalServices.ConfigService
         #region Prefabs
 
         [field: SerializeField] public LoadingCurtainView LoadingCurtainViewPrefab { get; private set; }
-        [field: SerializeField] public List<ChunkController> ChunkBehavioursPrefabs { get; private set; }
+        [field: SerializeField] public List<ChunkController> ChunkControllersPrefabs { get; private set; }
         [field: SerializeField] public PlayerController PlayerControllerPrefab { get; private set; }
+        [field: SerializeField] public List<ObstacleController> ObstacleControllersPrefab { get; private set; }
 
         #endregion
 
@@ -25,7 +27,8 @@ namespace Core.GlobalServices.ConfigService
         [field: SerializeField] public int ChunksPerSpawn { get; private set; } = 10;
         [field: SerializeField] public int SpawnTriggerDistance { get; private set; } = 30;
             
-        [field: SerializeField,Range(0f,1f)] public float FruitSpawnChance { get; private set; } = 0.25f;
+        [field: SerializeField,Range(0f,1f)] public float FruitSpawnChance { get; private set; } = 0.3f;
+        [field: SerializeField,Range(0f,1f)] public float ObstacleSpawnChance { get; private set; } = 0.45f;
 
         #endregion
         

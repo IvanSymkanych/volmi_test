@@ -13,21 +13,25 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   <LoadingCurtainViewPrefab>k__BackingField: {fileID: 9054848811342201061, guid: 4f08c3a518904144192e8d6aec891048, type: 3}
-  <ChunkBehavioursPrefabs>k__BackingField:
+  <ChunkControllersPrefabs>k__BackingField:
   - {fileID: 3547570692845725687, guid: 59f67aa07ae33744f91b9d30eabb3222, type: 3}
   <PlayerControllerPrefab>k__BackingField: {fileID: 3876418948478943783, guid: 867463dbb89c4aa45ab4bafab93027b8, type: 3}
+  <ObstacleControllersPrefab>k__BackingField:
+  - {fileID: 3303717799840362938, guid: e2e78cd2e5a206b49b17f1de0b6fe3c9, type: 3}
+  - {fileID: 5074867974607481893, guid: a885ad973dff2a0438bb0bacffbeeb87, type: 3}
   <FirsChunkPosition>k__BackingField: {x: 0, y: 0, z: -15}
   <PlayerPosition>k__BackingField: {x: 0, y: 0.55, z: 0}
   <ChunksPerSpawn>k__BackingField: 10
   <SpawnTriggerDistance>k__BackingField: 30
   <FruitSpawnChance>k__BackingField: 0.25
+  <ObstacleSpawnChance>k__BackingField: 0.45
   <FruitConfigs>k__BackingField:
   - score: 10
-    spawnChanceWeight: 600
+    spawnChanceWeight: 500
     fruitControllerPrefab: {fileID: 3001941004644520044, guid: f6da8b743ce9b354386524728e06fd57, type: 3}
   - score: 25
     spawnChanceWeight: 300
     fruitControllerPrefab: {fileID: 3001941004644520044, guid: eeac8f38746272842a492cef988b953c, type: 3}
   - score: 50
-    spawnChanceWeight: 100
+    spawnChanceWeight: 200
     fruitControllerPrefab: {fileID: 3001941004644520044, guid: a03434022aaed9a47b305cf81b2780e3, type: 3}

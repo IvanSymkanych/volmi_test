@@ -20,7 +20,7 @@ namespace Game.ChunkSystem
         private Transform _playerTransform;
         private ChunkController _lastChunk;
         private List<ChunkController> _chunks;
-        private bool _canCheckChunksSpawn = true;
+        private bool _canCheckChunksSpawn;
         
         public LevelController(GameConfigsSO gameConfigs, IGameFactory gameFactory, ILogGlobalService logGlobalService)
         {
@@ -35,16 +35,10 @@ namespace Game.ChunkSystem
             _chunks = new List<ChunkController>();
             SpawnInitialChunks();
         }
-
-        public void Dispose()
-        {
-            foreach (var chunk in _chunks)
-            {
-                chunk.Dispose();
-            }
-            _chunks.Clear();
-            _lastChunk = null;
-        }
+        
+        public void GameOver() => _canCheckChunksSpawn = true;
+        
+        public void StopGame() => _canCheckChunksSpawn = false;
         
         public void FixedTick()
         {
@@ -54,7 +48,7 @@ namespace Game.ChunkSystem
         
         private void SpawnInitialChunks()
         {
-            var prefab = _gameConfigs.ChunkBehavioursPrefabs[Random.Range(0, _gameConfigs.ChunkBehavioursPrefabs.Count)];
+            var prefab = _gameConfigs.ChunkControllersPrefabs[Random.Range(0, _gameConfigs.ChunkControllersPrefabs.Count)];
             _lastChunk = _gameFactory.CreateChunk(prefab);
             _lastChunk.transform.position = _gameConfigs.FirsChunkPosition;
             _chunks.Add(_lastChunk);
@@ -79,7 +73,7 @@ namespace Game.ChunkSystem
                 return;
             }
             
-            var prefab = _gameConfigs.ChunkBehavioursPrefabs[Random.Range(0, _gameConfigs.ChunkBehavioursPrefabs.Count)];
+            var prefab = _gameConfigs.ChunkControllersPrefabs[Random.Range(0, _gameConfigs.ChunkControllersPrefabs.Count)];
             var chunk = _gameFactory.CreateChunk(prefab);
             chunk.Initialize();
             
@@ -95,7 +89,9 @@ namespace Game.ChunkSystem
             
             _lastChunk = chunk;
             _chunks.Add(_lastChunk);
+            
             TrySpawnFruit(_lastChunk);
+            TrySpawnObstacle(_lastChunk);
         }
 
         private void SpawnChunksSection()
@@ -128,9 +124,19 @@ namespace Game.ChunkSystem
                 break;
             }
 
-            var parent = chunkController.FruitsSpawnPoints.GetRandomItem();
-            _gameFactory.CreateFruit(fruitConfig, parent);
+            var parent = chunkController.FruitsSpawnPoints.GetRandomItem(); 
+            var fruit = _gameFactory.CreateFruit(fruitConfig, parent); 
+            fruit.Initialize(fruitConfig);
         }
 
+        private void TrySpawnObstacle(ChunkController chunk)
+        {
+            if (Random.value > _gameConfigs.ObstacleSpawnChance)
+                return;
+
+            var prefab = _gameConfigs.ObstacleControllersPrefab.GetRandomItem();
+            var parent = chunk.ObstacleSpawnPoints.GetRandomItem();
+            _gameFactory.CreateObstacle(prefab, parent);
+        }
     }
 }

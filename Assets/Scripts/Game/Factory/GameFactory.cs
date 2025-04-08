@@ -2,6 +2,7 @@
 using Core.GlobalServices.ConfigService.Config;
 using Game.ChunkSystem;
 using Game.Collectable;
+using Game.Obstacle;
 using Game.Player;
 using UnityEngine;
 using VContainer;
@@ -39,6 +40,13 @@ namespace Game.Factory
             var instance = Object.Instantiate(fruitConfig.fruitControllerPrefab, parent);
             _objectResolver.InjectGameObject(instance.gameObject);
             return instance;
+        }
+
+        public ObstacleController CreateObstacle(ObstacleController obstaclePrefab, Transform parent)
+        {
+           var instance = Object.Instantiate(obstaclePrefab, parent);
+           _objectResolver.InjectGameObject(instance.gameObject);
+           return instance;
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿
-namespace CodeBase.Services.SaveLoadService
+namespace Core.GlobalServices.SaveLoadService
 {
     public interface ISaveLoadService
     {
-        // void SaveProgress();
-        // PlayerProgress LoadProgress();
+        GameSaveModel GameSaveModel { get; }
+        void Save();
     }
 }

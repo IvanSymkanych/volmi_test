@@ -1,6 +1,7 @@
 ﻿using Core.GlobalServices.ConfigService.Config;
 using Game.ChunkSystem;
 using Game.Collectable;
+using Game.Obstacle;
 using Game.Player;
 using UnityEngine;
 
@@ -11,5 +12,6 @@ namespace Game.Factory
         PlayerController CreatePlayer();
         ChunkController CreateChunk(ChunkController chunkPrefab);
         FruitController CreateFruit(FruitConfig fruitConfig, Transform parent);
+        ObstacleController CreateObstacle(ObstacleController obstaclePrefab, Transform parent);
     }
 }

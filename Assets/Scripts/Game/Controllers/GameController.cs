@@ -1,6 +1,10 @@
 ﻿using Core.GlobalServices.ConfigService;
+using Core.StateMachine.Base;
+using Core.StateMachine.Global;
+using Cysharp.Threading.Tasks;
 using Game.ChunkSystem;
 using Game.Factory;
+using Game.Player;
 using VContainer.Unity;
 
 namespace Game.Controllers
@@ -10,25 +14,44 @@ namespace Game.Controllers
         private readonly GameConfigsSO _gameConfigs;
         private readonly IGameFactory _gameFactory;
         private readonly ILevelController _levelController;
+        private readonly IStateMachine _globalStateMachine;
+        private readonly IScoreController _scoreController;
+        
+        private PlayerController _player;
 
-        public GameController(GameConfigsSO gameConfigs, IGameFactory gameFactory, ILevelController levelController)
+        public GameController(GameConfigsSO gameConfigs, IGameFactory gameFactory, ILevelController levelController, GlobalStateMachine globalStateMachine, IScoreController scoreController)
         {
             _gameConfigs = gameConfigs;
             _gameFactory = gameFactory;
             _levelController = levelController;
+            _globalStateMachine = globalStateMachine;
+            _scoreController = scoreController;
         }
 
         public void Start()
         {
-            var player = _gameFactory.CreatePlayer(); 
-            player.Initialize();
+            _player = _gameFactory.CreatePlayer(); 
+            _player.Initialize();
             
-            _levelController.Initialize(player.transform); 
+            _levelController.Initialize(_player.transform); 
+            StartGame();
         }
 
-        private void Dispose()
+        public void StartGame()
         {
-            _levelController.Dispose();
+            _player.StartGame();
+            _levelController.GameOver();
+        }
+
+        public void GameOver()
+        {
+            _levelController.GameOver();
+            _scoreController.GameOver();
+        }
+
+        public void GoToLobby()
+        {
+            _globalStateMachine.Enter<LobbyState>().Forget();
         }
     }
 }

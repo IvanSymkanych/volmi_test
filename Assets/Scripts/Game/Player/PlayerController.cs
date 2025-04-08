@@ -1,4 +1,7 @@
 ﻿using Core.GlobalServices.ConfigService;
+using Game.Collectable;
+using Game.Controllers;
+using Game.Obstacle;
 using UnityEngine;
 using VContainer;
 
@@ -10,10 +13,13 @@ namespace Game.Player
         [SerializeField] private float forwardSpeed = 10f;
         [SerializeField] private float laneSwitchSpeed = 10f;
 
+        [Inject] private IGameController _gameController;
+        
         private CharacterController _characterController;
         private IPlayerInput _playerInput;
 
         private int _laneIndex = 1;
+        private bool _canMove;
         
         [Inject] private GameConfigsSO _gameConfigs;
         
@@ -25,6 +31,11 @@ namespace Game.Player
             _playerInput.OnMoveRight += MoveRight;
             _playerInput.Initialize();
         }
+
+        public void StartGame()
+        {
+            _canMove = true;
+        }
         
         private void Update()
         {
@@ -35,20 +46,34 @@ namespace Game.Player
             _characterController.Move(move);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.TryGetComponent<ICollectable>(out var collectable))
+                collectable.Pickup();
+            
+            if (other.TryGetComponent<IObstacle>(out var obstacle))
+            {
+                obstacle.Interact();
+                ObstacleInteract();
+            }
+        }
+        
+        private void ObstacleInteract()
+        {
+            _canMove = false;
+            _gameController.GameOver();
+        }
+
         private void MoveLeft()
         {
-            if (_laneIndex > 0)
-            {
+            if (_laneIndex > 0) 
                 _laneIndex--;
-            }
         }
 
         private void MoveRight()
         {
-            if (_laneIndex < 2)
-            {
+            if (_laneIndex < 2) 
                 _laneIndex++;
-            }
         }
     }
 }
