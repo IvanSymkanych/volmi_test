@@ -1,6 +1,6 @@
 ﻿using Core.GlobalServices.LogService;
 using Cysharp.Threading.Tasks;
-using UnityEngine.AddressableAssets;
+using UnityEngine.SceneManagement;
 
 namespace Core.GlobalServices.SceneService
 {
@@ -9,12 +9,16 @@ namespace Core.GlobalServices.SceneService
         private readonly ILogGlobalService _logGlobalService;
 
         public SceneLoadGlobalService(ILogGlobalService logGlobalService) => _logGlobalService = logGlobalService;
-
+        
         public async UniTask Load(string sceneName)
         {
-            var handler = Addressables.LoadSceneAsync(sceneName);
-            await handler.ToUniTask();
-            await handler.Result.ActivateAsync().ToUniTask();
+            _logGlobalService.Log($"[SceneLoad] Loading scene: {sceneName}");
+
+            var operation = SceneManager.LoadSceneAsync(sceneName);
+            
+            await operation.ToUniTask();
+
+            _logGlobalService.Log($"[SceneLoad] Scene loaded: {sceneName}");
         }
     }
 }

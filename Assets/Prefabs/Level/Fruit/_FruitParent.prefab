@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7581251269368809190}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ColliderContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8620214825156302145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ModelsContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,8 +71,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2322050532433021721}
+  - component: {fileID: 5532492377956739974}
   - component: {fileID: 8170982890706289588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: _FruitParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,6 +98,18 @@ Transform:
   - {fileID: 7581251269368809190}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5532492377956739974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662926181863548270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ce23df65004192a317a4dcec5330a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &8170982890706289588
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -107,12 +120,12 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -127,7 +140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8378192809773677034}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

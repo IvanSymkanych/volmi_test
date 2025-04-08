@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Core.GlobalServices.ConfigService;
+using UnityEngine;
+using VContainer;
 
 namespace Game.Player
 {
@@ -13,7 +15,9 @@ namespace Game.Player
 
         private int _laneIndex = 1;
         
-        private void Start()
+        [Inject] private GameConfigsSO _gameConfigs;
+        
+        public void Initialize()
         {
             _characterController = GetComponent<CharacterController>();
             _playerInput = new PlayerInput();

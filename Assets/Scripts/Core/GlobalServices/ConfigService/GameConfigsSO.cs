@@ -1,0 +1,38 @@
+﻿using System.Collections.Generic;
+using Core.GlobalServices.ConfigService.Config;
+using Core.GlobalServices.CurtainService;
+using Game.ChunkSystem;
+using Game.Player;
+using UnityEngine;
+
+namespace Core.GlobalServices.ConfigService
+{
+    [CreateAssetMenu(fileName = "GameConfig", menuName = "Game Config", order = 0)]
+    public sealed class GameConfigsSO : ScriptableObject
+    {
+        #region Prefabs
+
+        [field: SerializeField] public LoadingCurtainView LoadingCurtainViewPrefab { get; private set; }
+        [field: SerializeField] public List<ChunkController> ChunkBehavioursPrefabs { get; private set; }
+        [field: SerializeField] public PlayerController PlayerControllerPrefab { get; private set; }
+
+        #endregion
+
+        #region GameSettings
+
+        [field: SerializeField] public Vector3 FirsChunkPosition { get; private set; }
+        [field: SerializeField] public Vector3 PlayerPosition { get; private set; }
+        [field: SerializeField] public int ChunksPerSpawn { get; private set; } = 10;
+        [field: SerializeField] public int SpawnTriggerDistance { get; private set; } = 30;
+            
+        [field: SerializeField,Range(0f,1f)] public float FruitSpawnChance { get; private set; } = 0.25f;
+
+        #endregion
+        
+        #region Configs
+        
+        [field: SerializeField] public List<FruitConfig> FruitConfigs { get; private set; }
+        
+        #endregion
+    }
+}

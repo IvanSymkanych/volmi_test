@@ -8,7 +8,7 @@ namespace Core.ScopeInstaller
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<Bootstrapper>(Lifetime.Scoped).AsImplementedInterfaces().AsSelf();
+            builder.RegisterEntryPoint<Bootstrapper>(Lifetime.Scoped);
         }
     }
 }

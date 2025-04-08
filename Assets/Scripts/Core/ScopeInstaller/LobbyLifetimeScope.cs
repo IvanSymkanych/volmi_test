@@ -1,4 +1,6 @@
-﻿using VContainer;
+﻿using Lobby.Controller;
+using Lobby.Factory;
+using VContainer;
 using VContainer.Unity;
 
 namespace Core.ScopeInstaller
@@ -7,6 +9,9 @@ namespace Core.ScopeInstaller
     {
         protected override void Configure(IContainerBuilder builder)
         {
+            builder.RegisterEntryPoint<LobbyController>(Lifetime.Scoped);
+
+            builder.Register<ILobbyFactory, LobbyFactory>(Lifetime.Scoped);
         }
     }
 }

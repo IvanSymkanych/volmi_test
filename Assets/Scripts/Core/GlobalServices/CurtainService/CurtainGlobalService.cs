@@ -1,22 +1,18 @@
-﻿using Core.GlobalServices.AssetService;
+﻿using Core.GlobalServices.ConfigService;
 using UnityEngine;
 
 namespace Core.GlobalServices.CurtainService
 {
     public class CurtainGlobalService: ICurtainGlobalService
     {
-        private readonly IAssetProviderGlobalService _assetProviderGlobalService;
+        private readonly GameConfigsSO _gameConfigs;
         private LoadingCurtainView _view;
 
-        public CurtainGlobalService(IAssetProviderGlobalService assetProviderGlobalService)
-        {
-            _assetProviderGlobalService = assetProviderGlobalService;
-        }
-        
+        public CurtainGlobalService(GameConfigsSO gameConfigs) => _gameConfigs = gameConfigs;
+
         public void Initialize()
         {
-           var prefab = _assetProviderGlobalService.LoadAssetFromResources<LoadingCurtainView>(AssetAddress.LoadingCurtainViewPath);
-           _view = Object.Instantiate(prefab);
+           _view = Object.Instantiate(_gameConfigs.LoadingCurtainViewPrefab);
            _view.Initialize();
         }
 

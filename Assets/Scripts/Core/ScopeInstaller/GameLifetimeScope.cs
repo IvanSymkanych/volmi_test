@@ -1,5 +1,6 @@
-﻿using Core.StateMachine.StateFactory;
-using Game.GameStateMachine;
+﻿using Game.ChunkSystem;
+using Game.Controllers;
+using Game.Factory;
 using VContainer;
 using VContainer.Unity;
 
@@ -9,18 +10,11 @@ namespace Core.ScopeInstaller
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            RegisterStateMachine(builder);
-        }
-        
-        private static void RegisterStateMachine(IContainerBuilder builder)
-        {
-            builder.Register<Gamestrapper>(Lifetime.Scoped).AsImplementedInterfaces().AsSelf();
+            builder.RegisterEntryPoint<GameController>(Lifetime.Scoped);
 
-            builder.Register<IStateFactory, StatesFactory>(Lifetime.Singleton);
-            builder.Register<GameStateMachine>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
-
-            builder.Register<GameInitializeState>(Lifetime.Scoped);
-            builder.Register<GameplayState>(Lifetime.Scoped);
+            builder.Register<IGameFactory, GameFactory>(Lifetime.Scoped);
+            builder.Register<LevelController>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<IScoreController, ScoreController>(Lifetime.Scoped);
         }
     }
 }

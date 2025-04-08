@@ -13,9 +13,9 @@ namespace Core.StateMachine.Global
 
         public async UniTask StartAsync(CancellationToken cancellation)
         {
-            await _globalStateMachine.Enter<BootStateGlobal>();
-            await _globalStateMachine.Enter<LobbyStateGlobal>();
-            await _globalStateMachine.Enter<GameStateGlobal>();
+            await _globalStateMachine.Enter<BootState>();
+            await _globalStateMachine.Enter<LobbyState>();
+            await _globalStateMachine.Enter<GameState>();
         }
     }
 }
