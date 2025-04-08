@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 424082}
   - component: {fileID: 9517920}
   m_Layer: 0
-  m_Name: SF_Character_Human_Bartender
+  m_Name: Player_FBX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -797,7 +797,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: c3125fa5928c7c648af2c4567efe1af6, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0

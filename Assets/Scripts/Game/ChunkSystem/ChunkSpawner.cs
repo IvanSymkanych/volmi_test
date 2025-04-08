@@ -13,6 +13,10 @@ namespace Test
 
         private void Start()
         {
+            var prefab = chunkPrefabs[Random.Range(0, chunkPrefabs.Count)];
+            var chunk = Instantiate(prefab, spawnRoot);
+            _lastChunk = chunk;
+            
             for (int i = 0; i < 10; i++)
             {
                 SpawnNextChunk();
