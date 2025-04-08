@@ -260,7 +260,7 @@ Transform:
   m_LocalScale: {x: 12.2, y: 1, z: 22}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 745123962231394939}
+  m_Father: {fileID: 3851654923187941486}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1908721201462333666
 BoxCollider:
@@ -341,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4390195169530948335, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
       propertyPath: <ObstacleSpawnPoints>k__BackingField.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4390195169530948335, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
       propertyPath: '<FruitsSpawnPoints>k__BackingField.Array.data[0]'
@@ -359,6 +359,10 @@ PrefabInstance:
       propertyPath: '<ObstacleSpawnPoints>k__BackingField.Array.data[0]'
       value: 
       objectReference: {fileID: 468210665911534468}
+    - target: {fileID: 4390195169530948335, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
+      propertyPath: '<ObstacleSpawnPoints>k__BackingField.Array.data[1]'
+      value: 
+      objectReference: {fileID: 198575653541611958}
     - target: {fileID: 4390195169530948335, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
       propertyPath: '<ObstacleSpawnPoints>k__BackingField.Array.data[2]'
       value: 
@@ -390,12 +394,12 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4081748068978965878, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4480707742277754723}
     - targetCorrespondingSourceObject: {fileID: 8969368205081792808, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6711372318356641069}
-    - targetCorrespondingSourceObject: {fileID: 540904519770300259, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4480707742277754723}
     - targetCorrespondingSourceObject: {fileID: 7281327499543076935, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7902100638773604774}
@@ -418,9 +422,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 398849269300709817, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
   m_PrefabInstance: {fileID: 997155344857746712}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &745123962231394939 stripped
+--- !u!4 &3851654923187941486 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 540904519770300259, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4081748068978965878, guid: 42e326ce8306b1643be86bdd63a65db1, type: 3}
   m_PrefabInstance: {fileID: 997155344857746712}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7555601225856363871 stripped

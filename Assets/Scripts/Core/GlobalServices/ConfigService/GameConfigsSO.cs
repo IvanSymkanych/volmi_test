@@ -4,6 +4,7 @@ using Core.GlobalServices.CurtainService;
 using Game.ChunkSystem;
 using Game.Obstacle;
 using Game.Player;
+using UI;
 using UnityEngine;
 
 namespace Core.GlobalServices.ConfigService
@@ -17,6 +18,10 @@ namespace Core.GlobalServices.ConfigService
         [field: SerializeField] public List<ChunkController> ChunkControllersPrefabs { get; private set; }
         [field: SerializeField] public PlayerController PlayerControllerPrefab { get; private set; }
         [field: SerializeField] public List<ObstacleController> ObstacleControllersPrefab { get; private set; }
+        
+        [field: SerializeField] public BasePageView GameOverPagePrefab { get; private set; }
+        [field: SerializeField] public BasePageView GamePagePrefab { get; private set; }
+        [field: SerializeField] public BasePageView StartGamePagePrefab { get; private set; }
 
         #endregion
 
@@ -36,6 +41,13 @@ namespace Core.GlobalServices.ConfigService
         
         [field: SerializeField] public List<FruitConfig> FruitConfigs { get; private set; }
         
+        #endregion
+
+        #region PlayerConfig
+
+        [field: SerializeField] public float forwardSpeed { get; private set; } = 10;
+        [field: SerializeField] public float laneSwitchSpeed { get; private set; } = 10;
+
         #endregion
     }
 }

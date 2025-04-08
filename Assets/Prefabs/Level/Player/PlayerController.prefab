@@ -47,8 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570444c766f644c59d884d38d1575266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 10
-  laneSwitchSpeed: 10
+  playerAnimator: {fileID: 5546354332048025728}
 --- !u!143 &5655028127156821412
 CharacterController:
   m_ObjectHideFlags: 0
@@ -377,13 +376,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 115408, guid: 7f0d5cfa0da78e14fa3b96103d6b8823, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5546354332048025728}
   m_SourcePrefab: {fileID: 100100000, guid: 7f0d5cfa0da78e14fa3b96103d6b8823, type: 3}
 --- !u!4 &2635938879368185478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424082, guid: 7f0d5cfa0da78e14fa3b96103d6b8823, type: 3}
   m_PrefabInstance: {fileID: 2635938879368576532}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2635938879368494276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 115408, guid: 7f0d5cfa0da78e14fa3b96103d6b8823, type: 3}
+  m_PrefabInstance: {fileID: 2635938879368576532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5546354332048025728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635938879368494276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690273b3f11642faaa5c650fff325512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3130331144570350568
 PrefabInstance:
   m_ObjectHideFlags: 0

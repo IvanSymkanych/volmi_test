@@ -3,6 +3,7 @@ using Game.ChunkSystem;
 using Game.Collectable;
 using Game.Obstacle;
 using Game.Player;
+using UI;
 using UnityEngine;
 
 namespace Game.Factory
@@ -13,5 +14,6 @@ namespace Game.Factory
         ChunkController CreateChunk(ChunkController chunkPrefab);
         FruitController CreateFruit(FruitConfig fruitConfig, Transform parent);
         ObstacleController CreateObstacle(ObstacleController obstaclePrefab, Transform parent);
+        BasePageView CreatePage(BasePageView pagePrefab);
     }
 }

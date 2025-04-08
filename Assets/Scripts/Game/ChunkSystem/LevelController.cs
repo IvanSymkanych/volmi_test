@@ -36,9 +36,9 @@ namespace Game.ChunkSystem
             SpawnInitialChunks();
         }
         
-        public void GameOver() => _canCheckChunksSpawn = true;
+        public void StartGame() => _canCheckChunksSpawn = true;
         
-        public void StopGame() => _canCheckChunksSpawn = false;
+        public void GameOver() => _canCheckChunksSpawn = false;
         
         public void FixedTick()
         {
@@ -53,6 +53,8 @@ namespace Game.ChunkSystem
             _lastChunk.transform.position = _gameConfigs.FirsChunkPosition;
             _chunks.Add(_lastChunk);
             
+            SpawnChunk(false);
+            SpawnChunk(false);
             SpawnChunksSection();
         }
 
@@ -65,7 +67,15 @@ namespace Game.ChunkSystem
             }
         }
 
-        private void SpawnChunk()
+        private void SpawnChunksSection()
+        {
+            for (var i = 0; i < _gameConfigs.ChunksPerSpawn; i++)
+            {
+                SpawnChunk(true);
+            }
+        }
+
+        private void SpawnChunk(bool spawnEntity)
         {
             if (_lastChunk == null)
             {
@@ -90,16 +100,11 @@ namespace Game.ChunkSystem
             _lastChunk = chunk;
             _chunks.Add(_lastChunk);
             
+            if(!spawnEntity)
+                return;
+            
             TrySpawnFruit(_lastChunk);
             TrySpawnObstacle(_lastChunk);
-        }
-
-        private void SpawnChunksSection()
-        {
-            for (var i = 0; i < _gameConfigs.ChunksPerSpawn; i++)
-            {
-                SpawnChunk();
-            }
         }
 
         private void TrySpawnFruit(ChunkController chunkController)

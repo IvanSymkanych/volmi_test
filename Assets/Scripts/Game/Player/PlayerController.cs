@@ -1,6 +1,6 @@
-﻿using Core.GlobalServices.ConfigService;
+﻿using System;
+using Core.GlobalServices.ConfigService;
 using Game.Collectable;
-using Game.Controllers;
 using Game.Obstacle;
 using UnityEngine;
 using VContainer;
@@ -10,39 +10,43 @@ namespace Game.Player
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float forwardSpeed = 10f;
-        [SerializeField] private float laneSwitchSpeed = 10f;
-
-        [Inject] private IGameController _gameController;
+        public event Action OnGameOver;
         
+        [SerializeField] private PlayerAnimator playerAnimator;
+        
+        [Inject] private GameConfigsSO _gameConfigs;
+
         private CharacterController _characterController;
         private IPlayerInput _playerInput;
 
         private int _laneIndex = 1;
         private bool _canMove;
         
-        [Inject] private GameConfigsSO _gameConfigs;
-        
         public void Initialize()
         {
             _characterController = GetComponent<CharacterController>();
             _playerInput = new PlayerInput();
+            _playerInput.Initialize();
+            playerAnimator.Initialize();
             _playerInput.OnMoveLeft += MoveLeft;
             _playerInput.OnMoveRight += MoveRight;
-            _playerInput.Initialize();
         }
 
         public void StartGame()
         {
             _canMove = true;
+            playerAnimator.PlayRunAnimation();
         }
         
         private void Update()
         {
+            if(!_canMove)
+                return;
+            
             var targetX = (_laneIndex - 1) * 2f;
             var currentPos = transform.position;
-            var newX = Mathf.MoveTowards(currentPos.x, targetX, laneSwitchSpeed * Time.deltaTime);
-            var move = new Vector3(newX - currentPos.x, -9.81f * Time.deltaTime, forwardSpeed * Time.deltaTime);
+            var newX = Mathf.MoveTowards(currentPos.x, targetX, _gameConfigs.laneSwitchSpeed * Time.deltaTime);
+            var move = new Vector3(newX - currentPos.x, -9.81f * Time.deltaTime, _gameConfigs.forwardSpeed * Time.deltaTime);
             _characterController.Move(move);
         }
 
@@ -61,7 +65,8 @@ namespace Game.Player
         private void ObstacleInteract()
         {
             _canMove = false;
-            _gameController.GameOver();
+            playerAnimator.PlayGameOverAnimation();
+            OnGameOver?.Invoke();
         }
 
         private void MoveLeft()

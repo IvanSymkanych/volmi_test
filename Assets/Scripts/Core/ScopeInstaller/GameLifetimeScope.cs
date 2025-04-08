@@ -1,6 +1,7 @@
 ﻿using Game.ChunkSystem;
 using Game.Controllers;
 using Game.Factory;
+using Game.UI;
 using VContainer;
 using VContainer.Unity;
 
@@ -15,6 +16,7 @@ namespace Core.ScopeInstaller
             builder.Register<IGameFactory, GameFactory>(Lifetime.Scoped);
             builder.Register<LevelController>(Lifetime.Scoped).AsImplementedInterfaces();
             builder.Register<IScoreController, ScoreController>(Lifetime.Scoped);
+            builder.Register<IGameUIMediator, GameUIMediator>(Lifetime.Scoped);
         }
     }
 }

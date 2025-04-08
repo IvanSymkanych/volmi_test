@@ -26,7 +26,6 @@ namespace Core.StateMachine.Global
             
             await _sceneLoadGlobalService.Load(ConstantHelper.GameSceneName);
             
-            _curtainGlobalService.Hide();
             _logGlobalService.Log($"GameState Entered");
         }
 

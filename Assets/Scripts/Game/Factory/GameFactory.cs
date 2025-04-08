@@ -4,6 +4,7 @@ using Game.ChunkSystem;
 using Game.Collectable;
 using Game.Obstacle;
 using Game.Player;
+using UI;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -47,6 +48,14 @@ namespace Game.Factory
            var instance = Object.Instantiate(obstaclePrefab, parent);
            _objectResolver.InjectGameObject(instance.gameObject);
            return instance;
+        }
+
+        public BasePageView CreatePage(BasePageView pagePrefab)
+        {
+            var instance = Object.Instantiate(pagePrefab);
+            instance.Hide();
+            _objectResolver.InjectGameObject(instance.gameObject);
+            return instance;
         }
     }
 }

@@ -19,12 +19,15 @@ MonoBehaviour:
   <ObstacleControllersPrefab>k__BackingField:
   - {fileID: 3303717799840362938, guid: e2e78cd2e5a206b49b17f1de0b6fe3c9, type: 3}
   - {fileID: 5074867974607481893, guid: a885ad973dff2a0438bb0bacffbeeb87, type: 3}
+  <GameOverPagePrefab>k__BackingField: {fileID: 1038650949734731903, guid: a8210a78548cb5e49a8c312ad545c5a9, type: 3}
+  <GamePagePrefab>k__BackingField: {fileID: 2743013534234774345, guid: 1aa5965ff3b9f1e47b3a7a71bfafcc82, type: 3}
+  <StartGamePagePrefab>k__BackingField: {fileID: 2409446881606384821, guid: 78346c7ae92422c45bd628b818adbb72, type: 3}
   <FirsChunkPosition>k__BackingField: {x: 0, y: 0, z: -15}
   <PlayerPosition>k__BackingField: {x: 0, y: 0.55, z: 0}
   <ChunksPerSpawn>k__BackingField: 10
   <SpawnTriggerDistance>k__BackingField: 30
-  <FruitSpawnChance>k__BackingField: 0.25
-  <ObstacleSpawnChance>k__BackingField: 0.45
+  <FruitSpawnChance>k__BackingField: 0.65
+  <ObstacleSpawnChance>k__BackingField: 0.7
   <FruitConfigs>k__BackingField:
   - score: 10
     spawnChanceWeight: 500
