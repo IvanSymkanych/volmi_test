@@ -2,13 +2,13 @@
 using Core.StateMachine.Base;
 using Cysharp.Threading.Tasks;
 
-namespace Core.StateMachine.Game
+namespace Game.GameStateMachine
 {
-    public sealed class GameState : IState
+    public sealed class GameplayState : IState
     {
-        private ILogGlobalService _logGlobalService;
+        private readonly ILogGlobalService _logGlobalService;
 
-        public GameState(ILogGlobalService logGlobalService)
+        public GameplayState(ILogGlobalService logGlobalService)
         {
             _logGlobalService = logGlobalService;
         }

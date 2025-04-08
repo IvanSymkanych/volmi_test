@@ -32,9 +32,9 @@ namespace Core.ScopeInstaller
             builder.Register<IStateFactory, StatesFactory>(Lifetime.Singleton);
             builder.Register<GlobalStateMachine>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
 
-            builder.Register<BootState>(Lifetime.Scoped);
-            builder.Register<LobbyState>(Lifetime.Scoped);
-            builder.Register<GameState>(Lifetime.Scoped);
+            builder.Register<BootStateGlobal>(Lifetime.Scoped);
+            builder.Register<LobbyStateGlobal>(Lifetime.Scoped);
+            builder.Register<GameStateGlobal>(Lifetime.Scoped);
         }
     }
 }

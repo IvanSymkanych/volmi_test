@@ -1,21 +1,21 @@
 ﻿using Core.GlobalServices.AssetService;
 using Core.GlobalServices.CurtainService;
 using Core.GlobalServices.LogService;
-using Core.GlobalServices.SceneService;
 using Core.StateMachine.Base;
+using Core.StateMachine.Global;
 using Cysharp.Threading.Tasks;
 
-namespace Core.StateMachine.Global
+namespace Game.GameStateMachine
 {
-    public sealed class BootState : IState
+    public sealed class GameInitializeState : IState
     {
         private readonly IAssetProviderGlobalService _assetProviderGlobalService;
         private readonly ILogGlobalService _logGlobalService;
         private readonly ICurtainGlobalService _curtainGlobalService;
         private readonly GlobalStateMachine _globalStateMachine;
 
-        public BootState(
-            IAssetProviderGlobalService assetProviderGlobalService, 
+        public GameInitializeState(
+            IAssetProviderGlobalService assetProviderGlobalService,
             ILogGlobalService logGlobalService,
             ICurtainGlobalService curtainGlobalService)
         {
@@ -26,13 +26,12 @@ namespace Core.StateMachine.Global
 
         public async UniTask Enter()
         {
-            await _assetProviderGlobalService.InitializeAsync();
-            
-            _curtainGlobalService.Initialize();
-            _curtainGlobalService.Show(false);
-            _logGlobalService.Log("BootState Entered)");
+            _logGlobalService.Log("GameInitializeState Enter)");
         }
 
-        public async UniTask Exit() => _logGlobalService.Log("BootState Exited)");
+        public async UniTask Exit()
+        {
+            _logGlobalService.Log("GameInitializeState Exit)");
+        }
     }
 }

@@ -7,9 +7,9 @@ namespace Core.StateMachine.Global
     {
         public GlobalStateMachine(IStateFactory stateFactory) : base(stateFactory)
         {
-            States.Add(typeof(BootState), stateFactory.Create<BootState>());
-            States.Add(typeof(LobbyState), stateFactory.Create<LobbyState>());
-            States.Add(typeof(GameState), stateFactory.Create<GameState>());
+            States.Add(typeof(BootStateGlobal), stateFactory.Create<BootStateGlobal>());
+            States.Add(typeof(LobbyStateGlobal), stateFactory.Create<LobbyStateGlobal>());
+            States.Add(typeof(GameStateGlobal), stateFactory.Create<GameStateGlobal>());
         }
     }
 }

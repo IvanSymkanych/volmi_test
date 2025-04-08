@@ -3,7 +3,7 @@ using Core.StateMachine.Base;
 using Cysharp.Threading.Tasks;
 using VContainer.Unity;
 
-namespace Core.StateMachine.Game
+namespace Game.GameStateMachine
 {
     public sealed class Gamestrapper : IAsyncStartable
     {
@@ -14,7 +14,7 @@ namespace Core.StateMachine.Game
         public async UniTask StartAsync(CancellationToken cancellation)
         {
             await _gameStateMachine.Enter<GameInitializeState>();
-            await _gameStateMachine.Enter<GameState>();
+            await _gameStateMachine.Enter<GameplayState>();
         }
     }
 }

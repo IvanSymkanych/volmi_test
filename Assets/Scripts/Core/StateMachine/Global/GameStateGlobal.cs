@@ -7,14 +7,14 @@ using Cysharp.Threading.Tasks;
 
 namespace Core.StateMachine.Global
 {
-    public sealed class LobbyState : IState
+    public sealed class GameStateGlobal : IState
     {
         private readonly IAssetProviderGlobalService _assetProviderGlobalService;
         private readonly ILogGlobalService _logGlobalService;
         private readonly ICurtainGlobalService _curtainGlobalService;
         private readonly ISceneLoadGlobalService _sceneLoadGlobalService;
 
-        public LobbyState(IAssetProviderGlobalService assetProviderGlobalService, ILogGlobalService logGlobalService, ICurtainGlobalService curtainGlobalService, ISceneLoadGlobalService sceneLoadGlobalService)
+        public GameStateGlobal(IAssetProviderGlobalService assetProviderGlobalService, ILogGlobalService logGlobalService, ICurtainGlobalService curtainGlobalService, ISceneLoadGlobalService sceneLoadGlobalService)
         {
             _assetProviderGlobalService = assetProviderGlobalService;
             _logGlobalService = logGlobalService;
@@ -26,17 +26,17 @@ namespace Core.StateMachine.Global
         {
             _curtainGlobalService.Show();            
             
-            await _assetProviderGlobalService.WarmupAssetsByLabel(AssetLabels.LobbyLabel);
-            await _sceneLoadGlobalService.Load(AssetAddress.Scene.LobbyScene);
+            await _assetProviderGlobalService.WarmupAssetsByLabel(AssetLabels.GameLabel);
+            await _sceneLoadGlobalService.Load(AssetAddress.Scene.GameScene);
             
             _curtainGlobalService.Hide();
-            _logGlobalService.Log($"LobbyState Entered");
+            _logGlobalService.Log($"GameState Entered");
         }
 
         public async UniTask Exit()
         {
-            await _assetProviderGlobalService.ReleaseAssetsByLabel(AssetLabels.LobbyLabel);
-            _logGlobalService.Log($"LobbyState Exited");
+            await _assetProviderGlobalService.ReleaseAssetsByLabel(AssetLabels.GameLabel);
+            _logGlobalService.Log($"GameState Exit");
         }
     }
 }
