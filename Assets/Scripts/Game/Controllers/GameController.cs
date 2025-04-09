@@ -63,6 +63,7 @@ namespace Game.Controllers
         public void GoToLobby()
         {
             Unsubscribe();
+            _player.Dispose();
             _globalStateMachine.Enter<LobbyState>().Forget();
         }
 

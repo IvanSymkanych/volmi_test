@@ -32,6 +32,13 @@ namespace Game.Player
             _playerInput.OnMoveRight += MoveRight;
         }
 
+        public void Dispose()
+        {
+            _playerInput.Dispose();
+            _playerInput.OnMoveLeft -= MoveLeft;
+            _playerInput.OnMoveRight -= MoveRight;
+        }
+        
         public void StartGame()
         {
             _canMove = true;

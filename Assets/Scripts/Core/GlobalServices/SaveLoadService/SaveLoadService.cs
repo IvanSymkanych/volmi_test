@@ -14,7 +14,6 @@ namespace Core.GlobalServices.SaveLoadService
 
         private void Load()
         {
-            PlayerPrefs.DeleteAll();
            var loadModel = JsonUtility.FromJson<GameSaveModel>(PlayerPrefs.GetString(SavePrefsKey));
            
            if (loadModel == null)

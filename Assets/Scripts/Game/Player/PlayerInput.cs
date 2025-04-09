@@ -9,7 +9,7 @@ namespace Game.Player
         public event Action OnMoveLeft;
         public event Action OnMoveRight;
         
-        private const float SwipeThreshold = 50f;
+        private const float SwipeThreshold = 25f;
 
         private readonly InputActions _inputActions = new();
 
